@@ -22,10 +22,12 @@ def processtext():
     {"role": "assistant", "content" : "Sure, I will generate the code for the prompt and won't be explaining the code. Give me the prompt."},
     {"role": "user", "content" : text}]
     )
+
     print(completion['choices'][0]['message']['content'])
     html=completion['choices'][0]['message']['content']
+    html=(html.split("```"))[1].split("```")[0]
     return render_template("result.html", textboxdata=html)
-    
+
 
 if __name__ == "__main__":
     app.run(debug=True)
