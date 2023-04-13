@@ -32,9 +32,12 @@ def processtext():
     )
     print(completion['choices'][0]['message']['content'])
     html=completion['choices'][0]['message']['content']
-    html=(html.split("```"))[1].split("```")[0]
-    ehtml=html[:html.find("</body>")]+"<center><a href='/copycode'>Copy Code</a></center>"+html[html.find("</body>"):]
-    return render_template("result.html", textboxdata=ehtml)
+    try:
+        html=(html.split("```"))[1].split("```")[0]
+        ehtml=html[:html.find("</body>")]+"<center><a href='/copycode'>Copy Code</a></center>"+html[html.find("</body>"):]
+        return render_template("result.html", textboxdata=ehtml)
+    except:
+        return "<h2> FridayAI was unable to extract information regarding the same. Please retry !</h2>"
 
 
 if __name__ == "__main__":
