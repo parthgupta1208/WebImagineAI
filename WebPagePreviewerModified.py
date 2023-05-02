@@ -22,7 +22,7 @@ def copycode():
 def processtext():
     global html
     text = request.form['textboxinputdata']
-    openai.api_key = os.getenv("OPENAI_KEY")
+    openai.api_key = os.environ["OPENAI_KEY"]
     completion = openai.ChatCompletion.create(
     model="gpt-3.5-turbo", 
     messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on how a webpage should look like and what will its function be. Give me the code for it but don't explain how the code works. The code should contain css and javscript code so the page is responsive. Ise the <script> and <style> tags instead of creating separate files"},
